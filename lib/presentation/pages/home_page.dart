@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () => context.goNamed(
             "settings",
-            pathParameters: {"name": "codexxx"},
+            pathParameters: {"name": "codemagic"},
           ),
           child: const Text('Go to Settings page'),
         ),
