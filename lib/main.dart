@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_statemgmt/core/router.dart';
 import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+/*class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
   final GoRouter _router = AppRouter.configureRoutes();
@@ -24,22 +25,18 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}*/
+
+class MyApp extends ConsumerStatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
 }
 
-/*
-import 'package:flutter/material.dart';
-import 'package:flutter_statemgmt/home_page.dart';
-import 'package:flutter_statemgmt/settings_page.dart';
-import 'package:go_router/go_router.dart';
+class _MyAppState extends ConsumerState<MyApp> {
+  final GoRouter _router = AppRouter.configureRoutes();
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -51,23 +48,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-
-  final GoRouter _router = GoRouter(
-    routes: [
-      GoRoute(
-        name: "home",
-        path: "/",
-        builder: (context, state) => const HomePage(),
-        routes: [
-          GoRoute(
-            name: "settings",
-            path: "settings/:name",
-            builder: (context, state) => SettingsPage(
-              name: state.pathParameters["name"]!,
-            ),
-          )
-        ],
-      ),
-    ],
-  );
-}*/
+}
