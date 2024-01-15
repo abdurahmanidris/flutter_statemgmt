@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:flutter_statemgmt/core/counter_demo.dart';
 import 'package:flutter_statemgmt/core/router.dart';
 import 'package:go_router/go_router.dart';
 
+/*final counterProvider =
+    StateNotifierProvider<CounterDemo, int>((ref) => CounterDemo());*/
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
