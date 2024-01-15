@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_statemgmt/core/api_service.dart';
+
 import 'package:flutter_statemgmt/core/router.dart';
 import 'package:flutter_statemgmt/core/counter_demo.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:flutter_statemgmt/core/user_model.dart';
+
 import 'package:go_router/go_router.dart';
+
+//Future Provider
+final apiProvider = Provider<ApiService>(
+  (ref) => ApiService(),
+);
+
+final userDataProvider = FutureProvider<List<UserModel>>(
+  (ref) {
+    return ref.read(apiProvider).getUser();
+  },
+);
 
 final counterProvider =
     StateNotifierProvider<CounterDemo, int>((ref) => CounterDemo());
@@ -24,6 +40,7 @@ class HomePage extends ConsumerWidget {
             .showSnackBar(SnackBar(content: Text('The value is $next')));
       }
     }));*/
+    final userData = ref.watch(userDataProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -43,6 +60,7 @@ class HomePage extends ConsumerWidget {
             style: const TextStyle(fontSize: 25),
           ),
         ]),
+
         // child: Text(name),
       ),
       floatingActionButton: FloatingActionButton(
