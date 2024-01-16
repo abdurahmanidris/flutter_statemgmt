@@ -1,54 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:flutter_statemgmt/core/counter_demo.dart';
-import 'package:flutter_statemgmt/core/router.dart';
-import 'package:go_router/go_router.dart';
 
-/*final counterProvider =
-    StateNotifierProvider<CounterDemo, int>((ref) => CounterDemo());*/
+import 'home/my_home_page.dart';
+
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: const MyApp()));
 }
 
-/*class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  final GoRouter _router = AppRouter.configureRoutes();
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      // routerDelegate: _router.routerDelegate,
-      // routeInformationParser: _router.routeInformationParser,
-      routerConfig: _router,
-      title: 'Go router',
+    return MaterialApp(
+      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-    );
-  }
-}*/
-
-class MyApp extends ConsumerStatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends ConsumerState<MyApp> {
-  final GoRouter _router = AppRouter.configureRoutes();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _router,
-      title: 'Go router',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      home: const MyHomePage(),
     );
   }
 }
