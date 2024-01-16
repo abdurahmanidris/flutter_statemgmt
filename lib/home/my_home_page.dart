@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_statemgmt/dataprovider/data_provider.dart';
+import 'package:flutter_statemgmt/features/drawer_widget.dart';
 import 'package:flutter_statemgmt/models/user_model.dart';
 import 'package:flutter_statemgmt/screens/detail_screen.dart';
 
@@ -13,6 +14,7 @@ class MyHomePage extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final _data = ref.watch(userDataProvider);
     return Scaffold(
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         title: const Text("Riverpod"),
       ),
